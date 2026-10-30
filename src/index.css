@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+@theme {
+  --font-script: "Great Vibes", cursive;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Outfit", sans-serif;
+  --color-wine: #1a0b0e;
+  --color-burgundy: #6b2d3c;
+  --color-rose: #c48b8b;
+  --color-gold: #d4af7a;
+  --color-cream: #f6ede4;
+  --color-paper: #f3e6d8;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: #0c0507;
+  color: #f6ede4;
+  font-family: var(--font-sans);
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow: hidden;
+}
+
+* {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.selectable {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.paper {
+  background-color: #f3e6d8;
+  background-image:
+    radial-gradient(rgba(90, 50, 40, 0.045) 0.6px, transparent 0.6px),
+    linear-gradient(180deg, #f7ebe0 0%, #ead5c1 100%);
+  background-size:
+    3px 3px,
+    100% 100%;
+}
+
+.paper-grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.vinyl {
+  background:
+    radial-gradient(circle at 50% 50%, transparent 18%, rgba(255, 255, 255, 0.05) 18.5%, transparent 19%),
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      #0b0b0b 0px,
+      #0b0b0b 1.6px,
+      #161616 2px,
+      #1c1c1c 3px
+    );
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 10px #0a0a0a,
+    inset 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.vinyl-spin {
+  animation: vinyl-rotate 3.6s linear infinite;
+}
+
+@keyframes vinyl-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translate3d(0, 110%, 0) scale(0.7) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(var(--drift), -120vh, 0) scale(1.1) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.12);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 122, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(212, 175, 122, 0);
+  }
+}
+
+@keyframes petal {
+  0% {
+    transform: translate3d(0, -10%, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(280deg);
+    opacity: 0;
+  }
+}
+
+@keyframes chevron {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-8px);
+  }
+}
+
+.float-heart {
+  animation: float-up 9s ease-in infinite;
+}
+
+.pulse-soft {
+  animation: pulse-soft 2.2s ease-in-out infinite;
+}
+
+.heart-beat {
+  animation: heart-beat 1.4s ease-in-out infinite;
+}
+
+.seal-glow {
+  animation: glow 2.4s ease-out infinite;
+}
+
+.wave-bar {
+  animation: wave 1s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.fall-petal {
+  animation: petal 11s linear infinite;
+}
+
+.chevron-nudge {
+  animation: chevron 1.6s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #d4af7a 0%, #fff4dd 50%, #d4af7a 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af7a, transparent);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #d4af7a;
+  cursor: pointer;
+  border: 0;
+}
+
+.vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 4, 6, 0.55) 100%);
+}
+
+.snap-frame {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+}
